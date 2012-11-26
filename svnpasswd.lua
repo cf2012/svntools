@@ -21,7 +21,7 @@ if username and password then
    -- create file if not exits
     os.execute(string.format('[ -e %s ] || touch %s', passwordfile, passwordfile))
 
-    os.execute(string.format('htpasswd -bs %s %s %s', passwordfile, username, password))
+    os.execute(string.format('htpasswd -b %s %s %s', passwordfile, username, password))
     os.exit(0)
 else
     io.stderr:write(string.format ("Usage: %s USERNAME PASSWORD\n", arg[0]))
