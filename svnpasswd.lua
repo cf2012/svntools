@@ -2,8 +2,8 @@
 require 'os'
 require 'dict4ini'
 
-passwordfile = os.getenv('svn_authfile') or 'authfile'
-authz_file = os.getenv('svn_authz_file') or 'authz.conf'
+passwordfile = os.getenv('SvnAuthUserFile') or 'authfile'
+authz_file = os.getenv('SvnAuthzAccessFile') or 'authz.conf'
 
 username, password = arg[1], arg[2]
 
@@ -22,6 +22,7 @@ if username and password then
     os.execute(string.format('[ -e %s ] || touch %s', passwordfile, passwordfile))
 
     os.execute(string.format('htpasswd -b %s %s %s', passwordfile, username, password))
+    io.stdout:write("success!\n")
     os.exit(0)
 else
     io.stderr:write(string.format ("Usage: %s USERNAME PASSWORD\n", arg[0]))
