@@ -18,7 +18,7 @@ function dict4ini.read(inifile)
             -- search for: [section]
             section = string.match(line, '^%[(.*)%]$') or section or 'nil'
             if section then
-                -- 这里存在缺陷, 只支持等号两边有空格的情况!
+                -- 这里存在缺陷, 只支持等号两边有空格的情况!. < 已解决.
                 if not dict4ini.cfg[section] then dict4ini.cfg[section] ={} end
                 name, value = string.match(line, '^(.*)%s*=%s*(.*)$')
                 if name then
